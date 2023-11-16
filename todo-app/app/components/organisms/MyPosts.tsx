@@ -1,8 +1,8 @@
 import React from 'react'
 import { AiOutlineDelete, AiOutlineEdit } from "react-icons/ai"
-import Button from './Button';
+import Button from '../atoms/Button';
 import Link from 'next/link';
-import { userStore } from '../store/userStore';
+import { userStore } from '../../store/userStore';
 
 type Tasks = {
     _id?: string;

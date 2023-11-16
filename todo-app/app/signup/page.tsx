@@ -5,7 +5,7 @@ import { useLocalStorage } from '@mantine/hooks';
 import axios from 'axios';
 import { userStore } from '../store/userStore';
 import { statesStore } from '../store/states';
-import UserForm from '../components/UserForm';
+import UserForm from '../components/molecules/UserForm';
 
 const page = () => {
   const router = useRouter()
@@ -19,7 +19,6 @@ const page = () => {
   const email = userStore(state => state.email)
   const setEmail = userStore(state => state.updateEmail)
   const setUserId = userStore(state => state.updateUserId)
-  const userId = userStore(state => state.userId)
 
 
   // Login and saved states
@@ -81,11 +80,11 @@ const page = () => {
   };
 
   return (
-    <div className='grid place-items-center min-h-screen bg-slate-900'>
-      {userExist && <p className='p-4 w-full bg-white text-red-500 text-2xl text-center fixed top-0'>User Already Exist</p>}
-      {userSaved && <p className='p-4 w-full bg-white text-green-500 text-2xl text-center fixed top-0'>Signup successfull</p>}
-      <UserForm handleSubmit={handleSubmit} />
-    </div>
+      <div className='grid place-items-center min-h-screen bg-slate-900'>
+        {userExist && <p className='p-4 w-full bg-white text-red-500 text-2xl text-center fixed top-0'>User Already Exist</p>}
+        {userSaved && <p className='p-4 w-full bg-white text-green-500 text-2xl text-center fixed top-0'>Signup successfull</p>}
+        <UserForm handleSubmit={handleSubmit} />
+      </div>
   )
 }
 

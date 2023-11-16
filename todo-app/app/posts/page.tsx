@@ -4,13 +4,12 @@ import { useRouter } from 'next/navigation'
 
 import axios from 'axios';
 import { statesStore } from '../store/states';
-import AllPosts from '../components/AllPosts';
+import AllPosts from '../components/organisms/AllPosts';
 
 
 function Tasks() {
   const router = useRouter()
 
-  const posts = statesStore(state => state.posts)
   const setPosts = statesStore(state => state.updatePosts)
 
   useEffect(() => {
@@ -28,9 +27,9 @@ function Tasks() {
 
   return (
     <div className='grid place-items-center min-h-screen bg-slate-900 text-slate-100 text-center py-8'>
-      <div className='space-y-6 md:max-w-[500px] md:min-w-[500px]'>
+      <div className='space-y-6 px-10'>
         <h1>All Posts</h1>
-        <AllPosts posts={posts} />
+        <AllPosts />
       </div>
     </div>
   );

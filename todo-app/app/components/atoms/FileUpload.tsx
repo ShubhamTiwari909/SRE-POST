@@ -1,14 +1,15 @@
 'use client';
 
 import * as React from 'react';
-import { useEdgeStore } from '../lib/edgestore';
-import { statesStore } from '../store/states';
+import { useEdgeStore } from '../../lib/edgestore';
+import { statesStore } from '../../store/states';
 
 export default function Page() {
     const [file, setFile] = React.useState<File>();
     const { edgestore } = useEdgeStore();
     const post = statesStore(state => state.post)
     const setPost = statesStore(state => state.updatePost)
+    const setProgress = statesStore(state => state.updateProgress)
 
     return (
         <div>
@@ -25,7 +26,7 @@ export default function Page() {
                             file,
                             onProgressChange: (progress) => {
                                 // you can use this to show a progress bar
-                                console.log(progress);
+                                setProgress(progress)
                             },
                         });
                         // you can run some server action or api here

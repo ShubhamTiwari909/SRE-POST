@@ -1,4 +1,6 @@
 const Post = require('../models/Post');
+const User = require('../models/User');
+
 
 // Create a new task
 const createPost = async (req, res) => {
@@ -65,4 +67,31 @@ const deletePost = async (req, res) => {
   res.status(204).end();
 };
 
-module.exports = { createPost, getPosts, getPostById, getPostByUserEmail, updatePost, deletePost };
+const likesCount = async (req,res) => {
+  try {
+    const postId = req.query.postId;
+    const userId = req.query.userId;
+
+    const findPostById = await Post.findById(postId)
+
+    const foundObject = await Post.findOne({
+      _id: postId,
+      likes: { $elemMatch: { userId: userId } }
+    });
+
+    if(!foundObject) {
+      findPostById.likes.push({"userId":userId})
+      findPostById.likesCount++
+    
+      await findPostById.save()
+    }
+    const tasks = await Post.find();
+    res.status(201).json(tasks);
+  
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+}
+
+module.exports = { createPost, getPosts, getPostById, getPostByUserEmail, updatePost, deletePost,likesCount };

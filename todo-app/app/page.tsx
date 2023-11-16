@@ -1,8 +1,7 @@
 "use client"
 import React, { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
-import Hero from './components/Hero'
-import { userStore } from './store/userStore'
+import Hero from './components/molecules/Hero'
 
 const Home = () => {
   const router = useRouter()

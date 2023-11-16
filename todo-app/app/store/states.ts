@@ -4,7 +4,9 @@ type Post = {
     _id?: string;
     title: string;
     description: string;
-    imageUrl:string
+    imageUrl:string,
+    likes:[],
+    likesCount:number
 }
 
 type State = {
@@ -14,7 +16,8 @@ type State = {
     post: Post,
     myPosts: Post[],
     editing: boolean,
-    taskId: string | null
+    taskId: string | null,
+    progress:number
 }
 
 type Action = {
@@ -25,6 +28,7 @@ type Action = {
     updatePost: (post: State['post']) => void,
     updateEditing: (editing: State['editing']) => void,
     updateTaskId: (taskId: State['taskId']) => void,
+    updateProgress: (progress: State['progress']) => void,
 }
 
 // Create your store, which includes both state and (optionally) actions
@@ -33,9 +37,10 @@ export const statesStore = create<State & Action>((set) => ({
     userSaved: false,
     posts: [],
     myPosts: [],
-    post: { title: '', description: '',imageUrl:'' },
+    post: { title: '', description: '',imageUrl:'',likes:[],likesCount:0 },
     editing: false,
     taskId: null,
+    progress:0,
     updateUserExist: (userExist) => set(() => ({ userExist: userExist })),
     updateUserSaved: (userSaved) => set(() => ({ userSaved: userSaved })),
     updatePosts: (posts) => set(() => ({ posts: posts })),
@@ -43,4 +48,5 @@ export const statesStore = create<State & Action>((set) => ({
     updatePost: (post) => set(() => ({ post: post })),
     updateEditing: (editing) => set(() => ({ editing: editing })),
     updateTaskId: (taskId) => set(() => ({ taskId: taskId })),
+    updateProgress: (progress) => set(() => ({ progress: progress })),
 }))

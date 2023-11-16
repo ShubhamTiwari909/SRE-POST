@@ -4,6 +4,7 @@ const postController = require('../controllers/postController');
 const router = express.Router();
 
 router.post('/', postController.createPost);
+router.post('/likes', postController.likesCount);
 router.get('/', postController.getPosts);
 router.get('/:id', postController.getPostById);
 router.get('/my-posts/:id', postController.getPostByUserEmail);

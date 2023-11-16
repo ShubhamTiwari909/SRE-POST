@@ -1,7 +1,7 @@
 import React from 'react'
-import Button from './Button';
-import InputText from './Input';
-import { statesStore } from '../store/states';
+import Button from '../atoms/Button';
+import InputText from '../atoms/Input';
+import { statesStore } from '../../store/states';
 
 type Form = {
     handleSubmit: (e: React.FormEvent) => void | any;

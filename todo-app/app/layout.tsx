@@ -1,8 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import './globals.css'
-import NextTopLoader from 'nextjs-toploader';
-import Navbar from './components/Navbar';
+import Navbar from './components/molecules/Navbar';
 import { EdgeStoreProvider } from './lib/edgestore';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -20,14 +19,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <EdgeStoreProvider>
-          <Navbar />
-          {/* <NextTopLoader
-          color="violet"
-          speed={500}
-          /> */}
-          {children}
-        </EdgeStoreProvider>
+          <EdgeStoreProvider>
+            <Navbar />
+            {children}
+          </EdgeStoreProvider>
       </body>
     </html>
   )

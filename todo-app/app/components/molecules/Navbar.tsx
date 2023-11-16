@@ -1,6 +1,6 @@
 "use client"
 import React from 'react'
-import Button from './Button'
+import Button from '../atoms/Button'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { useLocalStorage } from '@mantine/hooks'
